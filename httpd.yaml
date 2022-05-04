@@ -1,0 +1,22 @@
+---
+- name: http
+  hosts: all
+  become: true
+
+  tasks:
+    - name: http
+      yum:
+        name: httpd
+        state: present
+
+    - name: fife
+      service:
+        name: firewalld
+        state: stopped
+        enabled: false
+
+    - name: httpd st
+      service:
+        name: httpd
+        state: started
+        enabled: true
